@@ -1,4 +1,7 @@
 def verifica_ganhador():
+    soma = 0
+    diagonal_1 = 0
+    diagonal_2 = 0
     # Checando linhas
     for i in range(tam):
         soma = matriz[i][0] + matriz[i][1] + matriz[i][2]
@@ -19,7 +22,6 @@ def verifica_ganhador():
         return 1
 
     return 0
-
 
 def printa_matriz():
 
@@ -57,12 +59,16 @@ def game():
             jogadas = jogadas - 1
 
         if verifica_ganhador() == 1:
-            print('Você ganhou!!')
+            print('Você ganhou, Jogador ',jogadas%2 + 1)
             printa_matriz()
             break
+
         if (jogadas>=9):
-            print("Empate!")
+            print("Empate!\n")
+            printa_matriz()
             break
+        
+    print(jogadas)
 
     jogadas = jogadas + 1
     
@@ -70,8 +76,8 @@ if __name__ == '__main__':
     op = 0
 
     tam = 3
-    matriz = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
     while op != 3:
+        matriz = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
         print('-=' * 5 + ' TIC TAC TOE ' + '=-' * 5)
         print('\n[ 1 ] Jogar \n[ 2 ] Como jogar \n[ 3 ] Sair')
         op = int(input())
